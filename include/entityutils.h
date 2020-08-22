@@ -34,7 +34,6 @@ namespace Utils {
 		If it returns false, no library functions should be used.
 		It should be called in GMOD_MODULE_OPEN.
 	*/
-
 	bool InitializeEnityList() {
 		SourceSDK::ModuleLoader server_loader("server");
 		SymbolFinder symfinder;
@@ -72,6 +71,10 @@ namespace Utils {
 		return g_pEntityList != nullptr;
 	}
 
+	/*
+		Retreive the CBaseEntity pointer for an entity at stackPos.
+		Defaults to the top of the stack.
+	*/
 	CBaseEntity* GetEntity(GarrysMod::Lua::ILuaBase* LUA, int stackPos = -1) {
 		if (!g_pEntityList)
 			LUA->ThrowError("EntityList is not initialized!");
