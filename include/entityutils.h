@@ -72,11 +72,11 @@ namespace Utils {
 		return g_pEntityList != nullptr;
 	}
 
-	CBaseEntity* GetEntity(GarrysMod::Lua::ILuaBase* LUA) {
+	CBaseEntity* GetEntity(GarrysMod::Lua::ILuaBase* LUA, int stackPos = -1) {
 		if (!g_pEntityList)
 			LUA->ThrowError("EntityList is not initialized!");
 
-		EHANDLE* hdl = LUA->GetUserType<EHANDLE>(1, GarrysMod::Lua::Type::ENTITY);
+		EHANDLE* hdl = LUA->GetUserType<EHANDLE>(stackPos, GarrysMod::Lua::Type::ENTITY);
 
 		if (!hdl)
 			LUA->ThrowError("Tried to use a NULL entity! (1)");
